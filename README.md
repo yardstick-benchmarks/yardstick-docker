@@ -6,93 +6,55 @@ Visit <a href="https://github.com/gridgain/yardstick" target="_blank">Yardstick 
 on how to run Yardstick benchmarks and how to generate graphs.
 
 ## Running Benchmarks
-1. Create a local clone of Yardstick Docker repository
-2. The easiest way to run benchmark servers is an executing *ignite-server/benchmark-server-run.sh* or *hz-server/benchmark-server-run.sh* script which will pull required docker image and run container. Execute this script so many times as servers one need.
+1. Pull latest docker image for server.
+    
+    # docker pull yardstickbenchmarks/yardstick-server
 
-    $ ignite-server/benchmark-server-run.sh
+2. Run container from server image.
 
+    # docker run -it --net=host -e GIT_REPO=*url repo* yardstickbenchmarks/yardstick-server
+    
+    where GIT_REPO mandatory argument and GIT_BRANCH is optional. GIT REPO is url to yardstick benchmark project.
 
-**Another way**
+3. Pull latest docker image for client.
 
-Pull latest image.
+    # docker pull yardstickbenchmarks/yardstick-client
 
-    For Hazelcast:
+4. Run container from client image.
 
-    # docker pull apacheignite/yardstick-hz-server
-
-    For Ignite:
-
-    # docker pull apacheignite/yardstick-ignite-server
-
-Run container.
-
-    For Hazelcast:
-
-    # docker run -d --net=host apacheignite/yardstick-hz-server
-
-    For Ignite:
-
-    # docker run -d --net=host apacheignite/yardstick-ignite-server
-
-3. The easiest way to run benchmark driver is an executing *ignite-server/benchmark-driver-run.sh* or *hz-server/benchmark-driver-run.sh* script which will pull and start docker image. The script requires one argument which is a directory where results uploaded.
-
-    $ ignite-driver/benchmark-driver-run.sh /home/bob/results
-
-
-**Another way**
-
-Pull latest image.
-
-    For Hazelcast:
-
-    # docker pull apacheignite/yardstick-hz-driver
-
-    For Ignite:
-
-    # docker pull apacheignite/yardstick-ignite-driver
-
-Run container.
-
-    For Hazelcast:
-
-    # docker run -d --net=host -v dir:/export apacheignite/yardstick-hz-driver
-
-    For Ignite:
-
-    # docker run -d --net=host -v dir:/export apacheignite/yardstick-ignite-driver
-
-    where dir absolute path to folder where results will be uploaded.
+    # docker run -it --net=host -e GIT_REPO=*url repo* -e GIT_BRANCH=*git branch* -v *dir*:/mnt yardstickbenchmarks/yardstick-client
+    
+    where dir is absolute path to folder where will be uploaded results.
 
 ## Running Benchmarks in AWS
-### Using AMI
 The easiest way to run benchmarks in AWS is an using created AMI image.
 
 1. Open the Amazon EC2 console.
 2. From the Amazon EC2 console dashboard, click Launch Instance.
 3. On the Choose an Amazon Machine Image (AMI) page, choose an community AMI and search *yardstick*.
-![alt AMI](https://raw.githubusercontent.com/apacheignite/yardstick-docker/master/img/bench-AMIs.png)
-4. Choose *yardstick-hazelcast-server-1.0* or *yardstick-ignite-server-1.0*
+![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/select-amis.png)
+4. Choose *yardstick-benchmark-server*.
 5. On the Choose an Instance Type page, select the hardware configuration and size of the instance to launch. Recommend to choose *c4.4xlarge, c4.2xlarge, c4.xlarge* of instance types.
-6. On the Configure Instance Details page choose number of instances. For more information see [amazon documentation.](https://aws.amazon.com/ru/documentation/).
+6. On the Configure Instance Details page choose number of instances. Add benchmark configuration properties into Advanced Details section: *GIT_REPO, AWS_ACCESS_KEY, AWS_SECRET_KEY, ES3_BUCKET*. For more information about credential [see.](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html)
+![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench-rul.png.png)
 7. On the Configure Security Group page create or choose security group which has an inbound rule for port 0-65535. For example:
-![alt AMI](https://raw.githubusercontent.com/apacheignite/yardstick-docker/master/img/bench-rul.png)
-8. Review and run instance.
-9. Connect to instance. For more information [see.](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html)
-10. Run *./start-benchmark-server.sh* and pass to two arguments: *aws access key* and *aws secret key*. For more information [see.](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html)
-
-    $ ./start-benchmark-server.sh LKJHDSAHJKHSA ASLKDJSLKDJSAO98790we-werwe
-
-11. Now the instance has a working benchmark server which always starts with instance.
-12. Launch benchmark driver instance by doing followed steps: first steps as 2-3, then choose yardstick-hazelcast-driver-1.0 or yardstick-ignite-driver-1.0 AMI, then as 5-8.
-13. Connect to drive instance. For more information [see.](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html)
-14. Run ./start-benchmark-driver.sh and pass to two mandatory arguments and one optional: *aws access key*, *aws secret key* and ES3 bucket name where will be uploaded benchmark results. Default driver tries upload results to *yardstick-benchmark* bucket. **ES3 bucket must be exist!**
-
-    $ ./start-benchmark-server.sh LKJHDSAHJKHSA ASLKDJSLKDJSAO98790we-werwe my-bucket
+![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench-rul.png)
+8. Review and run instances.
+9. Launch benchmark client instance by doing followed steps: first steps as 2-3, then choose *yardstick-benchmark-client* AMI, then as 5-8.
 
 After benchmark execution results will be uploaded to ES3 bucket. If bucket contains previous results yet then driver will generate comparative charts.
 
-![alt AMI](https://raw.githubusercontent.com/apacheignite/yardstick-docker/master/img/bench-result.png)
-![alt AMI](https://raw.githubusercontent.com/apacheignite/yardstick-docker/master/img/bench-results.png)
+![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench-result.png)
+![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench-results.png)
+
+## Yardstick benchmark repositories
+1. <a href="https://github.com/apacheignite/yardstick-ignite" target="_blank">Apache Ignite.</a>
+
+    *https://github.com/apacheignite/yardstick-ignite*
+    
+2. <a href="https://github.com/gridgain/yardstick-hazelcast" target="_blank">Hazelcast.</a>
+
+    *https://github.com/gridgain/yardstick-hazelcast*
 
 ## Provided Benchmarks
 The following benchmarks are provided:
