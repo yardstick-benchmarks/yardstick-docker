@@ -68,3 +68,5 @@ echo "Results uploaded."
 rm -rf "$BENCHMARK_LABEL"-results-*
 
 rm -rf temp_comp
+
+chmod -R 777 /mnt/*
