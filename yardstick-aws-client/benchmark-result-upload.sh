@@ -28,7 +28,7 @@ rename "s/results/$BENCHMARK_LABEL-results/" results*
 for dir in "$BENCHMARK_LABEL"-results-*
 do
     base=$(basename "$dir")
-    zip "${base}.zip" "$dir"
+    zip -r "${base}.zip" "$dir"
 done
 
 echo "Start to upload results to storage."
@@ -53,7 +53,7 @@ if [ ${cnt_bench} -gt 1 ]; then
 
     for filename in temp_comp/*.zip
     do
-      unzip $filename
+      unzip $filename -d temp_comp
     done
 
     rm -rf temp_comp/*.zip
@@ -79,8 +79,6 @@ if [ ${cnt_bench} -gt 1 ]; then
 
     rm -rf temp_comp
 fi;
-
-rm -rf "$BENCHMARK_LABEL"-results-*
 
 chmod -R 755 /mnt/*
 
