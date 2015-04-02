@@ -83,9 +83,11 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
 1. Create file with benchmark properties.
 
-    `GIT_REPO=benchmark_repo
+    ```
+    GIT_REPO=benchmark_repo
     AWS_ACCESS_KEY=your_access_key
     AWS_SECRET_KEY=your_secret_key`
+    ```
 
 2. Run benchmark yardstick server AMI which has `ami-da4e7fb2` image id.  
 
@@ -95,10 +97,12 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
 1. Create file with benchmark properties.
 
-    `GIT_REPO=benchmark_repo
+    ```
+    GIT_REPO=benchmark_repo
     AWS_ACCESS_KEY=your_access_key
     AWS_SECRET_KEY=your_secret_key
-    ES3_BUCKET=bucket_name *optional parameter by default yardstick-benchmark*`
+    ES3_BUCKET=bucket_name *optional parameter by default yardstick-benchmark
+    ```
 
 2. Run benchmark yardstick server AMI which has `ami-823405ea` image id.  
 
