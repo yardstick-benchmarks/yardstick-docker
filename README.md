@@ -35,7 +35,7 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 ![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/select-amis.png)
 4. Choose *yardstick-benchmark-server*.
 5. On the Choose an Instance Type page, select the hardware configuration and size of the instance to launch. Recommend to choose *c4.4xlarge, c4.2xlarge, c4.xlarge* of instance types.
-6. On the Configure Instance Details page choose number of instances. Add benchmark configuration properties into Advanced Details section: *GIT_REPO, AWS_ACCESS_KEY, AWS_SECRET_KEY, ES3_BUCKET*. For more information about credential [see.](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html)
+6. On the Configure Instance Details page choose number of instances. Add benchmark configuration properties into Advanced Details section: *GIT_REPO, AWS_ACCESS_KEY, AWS_SECRET_KEY, ES3_BUCKET(optional)*. For more information about credential [see.](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html)
 ![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench-prop.png)
 7. On the Configure Security Group page create or choose security group which has an inbound rule for port 0-65535. For example:
 ![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench-rul.png)
