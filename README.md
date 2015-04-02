@@ -41,6 +41,8 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 ![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench-rul.png)
 8. Review and run instances.
 9. Launch benchmark client instance by doing followed steps: first steps as 2-3, then choose *yardstick-benchmark-client* AMI, then as 5-8.
+9. Connect to instance. For more information [see.](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html)
+10. Looking at progress by *sudo docker logs container_id* command.  
 
 After benchmark execution results will be uploaded to ES3 bucket. If bucket contains previous results yet then driver will generate comparative charts.
 
