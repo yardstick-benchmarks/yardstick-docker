@@ -1,5 +1,5 @@
 # Start from a Debian image.
-FROM apacheignite/yardstick-env
+FROM yardstickbenchmarks/yardstick-env
 
 # Install tools.
 RUN apt-get update && apt-get install -y --fix-missing \
