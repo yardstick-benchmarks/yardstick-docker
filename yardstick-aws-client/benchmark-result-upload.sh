@@ -69,4 +69,4 @@ rm -rf "$BENCHMARK_LABEL"-results-*
 
 rm -rf temp_comp
 
-chmod -R 777 /mnt/*
+chmod -R 755 /mnt/*
