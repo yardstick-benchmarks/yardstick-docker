@@ -1,5 +1,5 @@
 # Start from a Debian image.
-FROM apacheignite/yardstick-aws
+FROM apacheignite/yardstick-env-aws
 
 # Prepare work directory.
 RUN mkdir /home/benchmark
