@@ -12,4 +12,6 @@ if [ ! -z "$ES3_BUCKET" ]; then
     OUT_FOLDER=$ES3_BUCKET
 fi
 
+s3cmd --access_key="$AWS_ACCESS_KEY" --secret_key="$AWS_SECRET_KEY" mb s3://"$OUT_FOLDER"
+
 s3fs $OUT_FOLDER /mnt

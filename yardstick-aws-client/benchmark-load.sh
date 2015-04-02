@@ -34,7 +34,7 @@ while read p; do
     if [[ ${p} == BENCHMARK_LABEL* ]]; then
         export BENCHMARK_LABEL=$(echo ${p} | sed 's/.*=\(.*\)/\1/')
     fi
-done < config/benchmark.properties
+done < config/benchmark-ec2.properties
 
 # Build benchmark.
 mvn clean package

@@ -13,7 +13,7 @@ while read p; do
     if [[ ${p} == BENCHMARK_LABEL* ]]; then
         export BENCHMARK_LABEL=$(echo ${p} | sed 's/.*=\(.*\)/\1/')
     fi
-done < config/benchmark.properties
+done < config/benchmark-ec2.properties
 
 # Ploat result.
 for file in results-*
@@ -24,21 +24,39 @@ done
 # Rename file.
 rename "s/results/$BENCHMARK_LABEL-results/" results*
 
-# If remote dir contains benchmark result then will generate compare graph.
-cnt_bench=$(ls /mnt/*-results-* 2>/dev/null | wc -l)
+# Zip results.
+for dir in "$BENCHMARK_LABEL"-results-*
+do
+    base=$(basename "$dir")
+    zip "${base}.zip" "$dir"
+done
 
-if [ ${cnt_bench} != 0 ]; then
+echo "Start to upload results to storage."
+
+mv "$BENCHMARK_LABEL"-results-* /mnt
+
+echo "Results uploaded."
+
+# If remote dir contains benchmark result then will generate compare graph.
+cnt_bench=$(ls /mnt/*-results-*.zip 2>/dev/null | wc -l)
+
+if [ ${cnt_bench} -gt 1 ]; then
     echo "Remote directory contains another benchmark results.";
     # Create remove directory and copy results to temp dir.
     mkdir temp_comp
 
-    echo "Start download result from storage."
+    echo "Start to download results from storage."
 
-    cp -R /mnt/*-results-* ./temp_comp
+    cp /mnt/*-results-*.zip ./temp_comp
 
     echo "Results downloaded."
 
-    cp -R ./*-results-* ./temp_comp
+    for filename in temp_comp/*.zip
+    do
+      unzip $filename
+    done
+
+    rm -rf temp_comp/*.zip
 
     lsArra=(./temp_comp/*-results-*)
 
@@ -47,6 +65,7 @@ if [ ${cnt_bench} != 0 ]; then
     for dir in results-comparison-*
     do
         base=$(basename "$dir")
+        zip -r "${base}$(date -d "today" +"%H%M")" "$dir"
         mv "$dir" "${base}$(date -d "today" +"%H%M")"
     done
 
@@ -57,16 +76,21 @@ if [ ${cnt_bench} != 0 ]; then
     echo "Comparison results uploaded."
 
     rm -rf results-comparison-*
+
+    rm -rf temp_comp
 fi;
-
-echo "Start upload benchmark results to storage."
-
-mv "$BENCHMARK_LABEL"-results-* /mnt
-
-echo "Results uploaded."
 
 rm -rf "$BENCHMARK_LABEL"-results-*
 
-rm -rf temp_comp
-
 chmod -R 755 /mnt/*
+
+# Set acl public.
+BUCKET=$(../benchmark-user-data.sh ES3_BUCKET)
+
+if [ -z "$BUCKET" ]; then
+    BUCKET="yardstick-benchmark"
+fi
+
+s3cmd --access_key=$(../benchmark-user-data.sh AWS_ACCESS_KEY) \
+    --secret_key=$(../benchmark-user-data.sh AWS_SECRET_KEY) setacl s3://$(../benchmark-user-data.sh ES3_BUCKET) \
+    --acl-public --recursive

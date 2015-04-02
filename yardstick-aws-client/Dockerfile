@@ -40,5 +40,7 @@ ENTRYPOINT \
   AWS_ACCESS_KEY=$(../benchmark-user-data.sh AWS_ACCESS_KEY) \
   AWS_SECRET_KEY=$(../benchmark-user-data.sh AWS_SECRET_KEY) \
   bin/benchmark-manual-drivers-start.sh config/benchmark-ec2.properties && \
+  AWS_ACCESS_KEY=$(../benchmark-user-data.sh AWS_ACCESS_KEY) \
+  AWS_SECRET_KEY=$(../benchmark-user-data.sh AWS_SECRET_KEY) \
   ../benchmark-result-upload.sh && \
   ../benchmark-wait.sh

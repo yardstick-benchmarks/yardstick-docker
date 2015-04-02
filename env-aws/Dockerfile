@@ -3,6 +3,8 @@ FROM yardstickbenchmarks/yardstick-env
 
 # Install tools.
 RUN apt-get update && apt-get install -y --fix-missing \
+  zip \
+  s3cmd \
   make \
   gcc \
   g++ \
