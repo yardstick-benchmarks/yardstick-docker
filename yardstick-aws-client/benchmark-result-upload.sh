@@ -90,5 +90,5 @@ if [ -z "$BUCKET" ]; then
 fi
 
 s3cmd --access_key=$(../benchmark-user-data.sh AWS_ACCESS_KEY) \
-    --secret_key=$(../benchmark-user-data.sh AWS_SECRET_KEY) setacl s3://BUCKET \
+    --secret_key=$(../benchmark-user-data.sh AWS_SECRET_KEY) setacl s3://"$BUCKET" \
     --acl-public --recursive
