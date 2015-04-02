@@ -68,23 +68,24 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
 ### Amazon ec2 cli
 
-1. Install ec2 cli tools. See amazon documentation http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/set-up-ec2-cli-linux.html.
-2. Create VPC. See amazon documentation http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ApiReference-cmd-CreateVpc.html.
-3. Create subnet for your VPC. See amazon documentation  http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ApiReference-cmd-CreateSubnet.html.
+1. Install ec2 cli tools. http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/set-up-ec2-cli-linux.html.
+2. Create VPC. http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ApiReference-cmd-CreateVpc.html.
+3. Create subnet for your VPC. http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ApiReference-cmd-CreateSubnet.html.
 4. Create security group which has an inbound rule for port 0-65535.
 
     `ec2-create-group group_name -d group_description -c your_vpc_id`
  
     `ec2-authorize security_id -P tcp -p 0-65535 -s 0.0.0.0/0`
-5. Create AWS credential. See amazon documentation. http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
+
+5. Create AWS credential. http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
     
-#### Run benchmark server
+#### Run benchmark servers
 
 1. Create file with benchmark properties.
 
-    GIT_REPO=benchmark_repo
+    `GIT_REPO=benchmark_repo
     AWS_ACCESS_KEY=your_access_key
-    AWS_SECRET_KEY=your_secret_key
+    AWS_SECRET_KEY=your_secret_key`
 
 2. Run benchmark yardstick server AMI which has `ami-da4e7fb2` image id.  
 
@@ -94,10 +95,10 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
 1. Create file with benchmark properties.
 
-    GIT_REPO=benchmark_repo
+    `GIT_REPO=benchmark_repo
     AWS_ACCESS_KEY=your_access_key
     AWS_SECRET_KEY=your_secret_key
-    ES3_BUCKET=bucket_name *optional parameter by default yardstick-benchmark*
+    ES3_BUCKET=bucket_name *optional parameter by default yardstick-benchmark*`
 
 2. Run benchmark yardstick server AMI which has `ami-823405ea` image id.  
 
@@ -105,7 +106,7 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
 ### Benchmark execution
 
-For monitoring benchmark execution need to connect to instances. See amazon documentation. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html
+For monitoring benchmark execution need to connect to instances. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html
 
 * For accessing to execution progress need to know a container id. The following command show it.
 
@@ -123,9 +124,6 @@ For monitoring benchmark execution need to connect to instances. See amazon docu
 
 * That see benchmark results directly on S3 bucket, need allow browser loading unsafe scrips.
 ![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/brows_setting.png)
-
-
-#### Run benchmark client
 
 ## Yardstick benchmark repositories
 1. **Apache Ignite.**
