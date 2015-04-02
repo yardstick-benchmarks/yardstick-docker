@@ -86,7 +86,7 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
     ```
     GIT_REPO=benchmark_repo
     AWS_ACCESS_KEY=your_access_key
-    AWS_SECRET_KEY=your_secret_key`
+    AWS_SECRET_KEY=your_secret_key
     ```
 
 2. Run benchmark yardstick server AMI which has `ami-da4e7fb2` image id.  
@@ -107,6 +107,10 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 2. Run benchmark yardstick server AMI which has `ami-823405ea` image id.  
 
     `ec2-run-instances ami-823405ea --instance-type instance_type -k you_ -n 1 -s your_subnet_id -g security_group_id -f property_file`
+    
+2. Added tag for client instance. Preview command return information about instance which has `instance id`.  
+
+    `ec2-create-tags ami-a80a3cc0 instance_id --tag "Name=Client"`
 
 ### Benchmark execution
 
