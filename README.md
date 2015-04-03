@@ -14,29 +14,29 @@ For running benchmark need to start `servers` and `client`
 
 1.Pull latest docker image for server.
 
-    # docker pull yardstickbenchmarks/yardstick-server
+    # docker pull yardstickbenchmarks/yardstick-server:1.0
 
 2.Run container from server image.
 
-    # docker run -it --net=host -e GIT_REPO=BENCHMARK_REPO yardstickbenchmarks/yardstick-server
+    # docker run -it --net=host -e GIT_REPO=BENCHMARK_REPO yardstickbenchmarks/yardstick-server:1.0
     
 For example for Apache Ignite:
 
-    # docker run -it --net=host -e GIT_REPO=https://github.com/apacheignite/yardstick-ignite yardstickbenchmarks/yardstick-server
+    # docker run -it --net=host -e GIT_REPO=https://github.com/apacheignite/yardstick-ignite yardstickbenchmarks/yardstick-server:1.0
 
 3.Pull latest docker image for client.
 
-    # docker pull yardstickbenchmarks/yardstick-client
+    # docker pull yardstickbenchmarks/yardstick-client:1.0
 
 4.Run container from client image.
 
-    # docker run -it --net=host -e GIT_REPO=BENCHMARK_REPO -v DIRECTORY:/mnt yardstickbenchmarks/yardstick-client
+    # docker run -it --net=host -e GIT_REPO=BENCHMARK_REPO -v DIRECTORY:/mnt yardstickbenchmarks/yardstick-client:1.0
 
     where DIRECTORY is absolute path to folder where will be uploaded results.
 
 For example for Apache Ignite:
 
-    # docker run -it --net=host -e GIT_REPO=https://github.com/apacheignite/yardstick-ignite -v ~/benchmark-result:/mnt yardstickbenchmarks/yardstick-client
+    # docker run -it --net=host -e GIT_REPO=https://github.com/apacheignite/yardstick-ignite -v ~/benchmark-result:/mnt yardstickbenchmarks/yardstick-client:1.0
 
 ## Running Benchmarks in AWS
 ### Amazon EC2 console
