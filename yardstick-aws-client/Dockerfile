@@ -1,5 +1,5 @@
 # Start from a Debian image.
-FROM yardstickbenchmarks/yardstick-env-aws
+FROM yardstickbenchmarks/yardstick-env-aws:1.0
 
 # Prepare work directory.
 RUN mkdir /home/benchmark
