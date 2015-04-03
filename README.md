@@ -50,7 +50,7 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 ![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/select_amis.png)
 4. Choose `yardstick-benchmark-server`.
 5. On the Choose an Instance Type page, select the hardware configuration and size of the instance to launch. Recommend to choose high network performance instance types: *m3.xlarge, m3.2xlarge, c4.2xlarge, c4.xlarge*.
-6. On the Configure Instance Details page choose number of instances. Add benchmark configuration properties into Advanced Details section: *GIT_REPO, AWS_ACCESS_KEY, AWS_SECRET_KEY, ES3_BUCKET(optional)*. For more information about credential see amazon documentation. http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
+6. On the Configure Instance Details page choose number of instances. Add benchmark configuration properties into Advanced Details section: *GIT_REPO, AWS_ACCESS_KEY, AWS_SECRET_KEY*. For more information about credential see amazon documentation. http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
 ![alt Benchmark properties](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench_prop.png)
 7. On the Tag Instance set value for Name tag. For example `server`.
 8. On the Configure Security Group page create or choose security group which has an inbound rule for port 0-65535. For example:
@@ -65,7 +65,7 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 ![alt AMI](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/select_amis.png)
 4. Choose `yardstick-benchmark-client`.
 5. On the Choose an Instance Type page, select the hardware configuration. Recommend to choose high network performance instance types: *m3.xlarge, m3.2xlarge, c4.2xlarge, c4.xlarge*.
-6. On the Configure Instance Details page choose number of instances. Add benchmark configuration properties into Advanced Details section: *GIT_REPO, AWS_ACCESS_KEY, AWS_SECRET_KEY, ES3_BUCKET (optional)*. ES3_BUCKET is bucket where will be uploaded benchmark results. If ES3_BUCKET is not provided then will use `yardstick-benchmark` bucket. For more information about credential see amazon documentation. http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
+6. On the Configure Instance Details page choose number of instances. Add benchmark configuration properties into Advanced Details section: *GIT_REPO, AWS_ACCESS_KEY, AWS_SECRET_KEY, ES3_BUCKET (optional)*. `ES3_BUCKET` is bucket where will be uploaded benchmark results. If `ES3_BUCKET` is not provided then will use `yardstick-benchmark` bucket. For more information about credential see amazon documentation. http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
 ![alt Benchmark properties](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench_prop.png)
 7. On the Tag Instance set value for Name tag. For example `client`.
 8. On the Configure Security Group page create or choose security group which has an inbound rule for port 0-65535. For example:
@@ -115,7 +115,7 @@ The command will print out `security group id` which will be used in the followi
     ES3_BUCKET=bucket_name
     ```
 
-*NOTE: ES3_BUCKET is bucket where will be uploaded benchmark results. If ES3_BUCKET is not provided then will use `yardstick-benchmark` bucket.*
+*NOTE: `ES3_BUCKET` is bucket where will be uploaded benchmark results. If `ES3_BUCKET` is not provided then will use `yardstick-benchmark` bucket.*
 
 
 2. Run benchmark yardstick server AMI which has `ami-823405ea` image id.  
@@ -150,6 +150,7 @@ For monitoring benchmark execution need to connect to instances. http://docs.aws
 ![alt S3 bucket](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/result_folder.png)
 
 * **That see benchmark results directly on S3 bucket, need allow browser loading unsafe scrips.**
+
 ![alt Browser settings](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/brows_setting.png)
 ![alt Result page](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench_chart.png)
 
