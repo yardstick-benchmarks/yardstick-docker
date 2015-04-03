@@ -115,16 +115,15 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
     ES3_BUCKET=bucket_name
     ```
 
-*NOTE: `ES3_BUCKET` is bucket where will be uploaded benchmark results. If `ES3_BUCKET` is not provided then will use `yardstick-benchmark` bucket.*
-
+    *NOTE: `ES3_BUCKET` is bucket where will be uploaded benchmark results. If `ES3_BUCKET` is not provided then will use `yardstick-benchmark` bucket.*
 
 2. Run benchmark yardstick server AMI which has `ami-823405ea` image id.  
 
     `ec2-run-instances ami-823405ea --instance-type INSTANCE_TYPE -k KEY_PAIRS -n 1 -s SUBNET_ID -g SECURITY_GROUP_ID -f PATH_TO_PROPERTY_FILE`
 
-*NOTE: Recommend to choose high network performance instance types: m3.xlarge, m3.2xlarge, c4.2xlarge, c4.xlarge.*
+    *NOTE: Recommend to choose high network performance instance types: m3.xlarge, m3.2xlarge, c4.2xlarge, c4.xlarge.*
 
-2. Added tag for client instance. Preview command returned information about instance which has `instance id`.  
+3. Added tag for client instance. Preview command returned information about instance which has `instance id`.  
 
     `ec2-create-tags ami-a80a3cc0 INSTANCE_ID --tag "Name=Client"`
 
