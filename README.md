@@ -165,11 +165,11 @@ For monitoring benchmark execution need to connect to instances. http://docs.aws
 
 3. **Spark**
 
-    *coming*
+    *is coming*
 
 4. **Cassandra**
 
-    *coming*
+    *is coming*
 
 ## Provided Benchmarks
 The following benchmarks are provided:
