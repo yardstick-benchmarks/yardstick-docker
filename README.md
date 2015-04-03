@@ -123,7 +123,7 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
     *NOTE: Recommend to choose high network performance instance types: m3.xlarge, m3.2xlarge, c4.2xlarge, c4.xlarge.*
 
-3. Added tag for client instance. Preview command returned information about instance which has `instance id`.  
+3. Add tag for client instance. Preview command returned information about instance which has `instance id`.  
 
     `ec2-create-tags ami-a80a3cc0 INSTANCE_ID --tag "Name=Client"`
 
