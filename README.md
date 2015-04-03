@@ -83,7 +83,7 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
 The command will print out `security group id` which will be used in the following command:
 
-    `ec2-authorize SECURITY_GROUP_ID -P tcp -p 0-65535 -s 0.0.0.0/0`
+    ec2-authorize SECURITY_GROUP_ID -P tcp -p 0-65535 -s 0.0.0.0/0
 
 5. Create `AWS access key` and `AWS secret key`. http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html
 6. Create Amazon EC2 Key Pairs. http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
