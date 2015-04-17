@@ -157,7 +157,7 @@ For monitoring benchmark execution need to connect to instances. http://docs.aws
 ### Data grid
 1. **Apache Ignite.**
 
-    *https://github.com/apacheignite/yardstick-ignite*
+    *https://github.com/yardstick-benchmarks/yardstick-ignite*
     
 2. **Hazelcast.**
 
