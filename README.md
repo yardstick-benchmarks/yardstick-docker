@@ -154,21 +154,31 @@ For monitoring benchmark execution need to connect to instances. http://docs.aws
 ![alt Result page](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench_chart.png)
 
 ## Yardstick benchmark repositories
+### Data grid
 1. **Apache Ignite.**
 
-    *https://github.com/apacheignite/yardstick-ignite*
+    *https://github.com/yardstick-benchmarks/yardstick-ignite*
     
 2. **Hazelcast.**
 
     *https://github.com/gridgain/yardstick-hazelcast*
 
-3. **Spark**
+3. **Infinispan**
 
-    *is coming*
+    *https://github.com/yardstick-benchmarks/yardstick-infinispan*
+    
+### Data streaming
 
-4. **Cassandra**
+1. **Apache Ignite vs Apache Spark**
 
-    *is coming*
+    *is comming*
+
+### NoSql
+
+1. **Apache Ignite vs Apache Cassandra**
+
+    *is comming*
+
 
 ## Provided Benchmarks
 The following benchmarks are provided:
