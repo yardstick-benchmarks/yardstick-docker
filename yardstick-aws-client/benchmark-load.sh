@@ -23,8 +23,8 @@ if [ ! -z ${GIT_BRANCH} ]; then
     git checkout "$GIT_BRANCH"
 fi
 
-if [ ! -f config/benchmark.properties ]; then
-    echo "File config/benchmark.properties not found!"
+if [ ! -f config/benchmark-ec2.properties ]; then
+    echo "File config/benchmark-ec2.properties not found!"
 
     exit 1
 fi
