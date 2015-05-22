@@ -98,9 +98,9 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
     AWS_SECRET_KEY=your_secret_key
     ```
 
-2. Run benchmark yardstick server AMI which has `ami-85d43ac1` image id.  
+2. Run benchmark yardstick server AMI which has `ami-29a0486d` image id.  
 
-    `ec2-run-instances ami-85d43ac1 --instance-type INSTANCE_TYPE -k KEY_PAIRS -n NUMBER_INSTANCES -s SUBNET_ID -g SECURITY_GROUP_ID -f PATH_TO_PROPERTY_FILE`
+    `ec2-run-instances ami-29a0486d --instance-type INSTANCE_TYPE -k KEY_PAIRS -n NUMBER_INSTANCES -s SUBNET_ID -g SECURITY_GROUP_ID -f PATH_TO_PROPERTY_FILE`
 
 *NOTE: Recommend to choose high network performance instance types: m3.xlarge, m3.2xlarge, c4.2xlarge, c4.xlarge.*
     
@@ -117,15 +117,15 @@ The easiest way to run benchmarks in AWS is an using created AMI image.
 
     *NOTE: `ES3_BUCKET` is bucket where will be uploaded benchmark results. If `ES3_BUCKET` is not provided then will use `yardstick-benchmark` bucket.*a
 
-2. Run benchmark yardstick client AMI which has `ami-15d13f51` image id.  
+2. Run benchmark yardstick client AMI which has `ami-45a14901` image id.  
 
-    `ec2-run-instances ami-15d13f51 --instance-type INSTANCE_TYPE -k KEY_PAIRS -n 1 -s SUBNET_ID -g SECURITY_GROUP_ID -f PATH_TO_PROPERTY_FILE`
+    `ec2-run-instances ami-45a14901 --instance-type INSTANCE_TYPE -k KEY_PAIRS -n 1 -s SUBNET_ID -g SECURITY_GROUP_ID -f PATH_TO_PROPERTY_FILE`
 
     *NOTE: Recommend to choose high network performance instance types: m3.xlarge, m3.2xlarge, c4.2xlarge, c4.xlarge.*
 
 3. Add tag for client instance. Preview command returned information about instance which has `instance id`.  
 
-    `ec2-create-tags ami-15d13f51 INSTANCE_ID --tag "Name=Client"`
+    `ec2-create-tags ami-45a14901 INSTANCE_ID --tag "Name=Client"`
 
 ### Benchmark execution
 
