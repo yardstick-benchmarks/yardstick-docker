@@ -153,6 +153,16 @@ For monitoring benchmark execution need to connect to instances. http://docs.aws
 ![alt Browser settings](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/brows_setting.png)
 ![alt Result page](https://raw.githubusercontent.com/yardstick-benchmarks/yardstick-docker/master/img/bench_chart.png)
 
+### AMI
+
+Region        | Yardstick server | Yardstick client
+------------- | ---------------- | ----------------
+us-east-1     |   [ami-425a402a](https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-425a402a)  |   [ami-8ea4bfe6](https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-8ea4bfe6) 
+us-west-1     |   [ami-29a0486d](https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-29a0486d)  |   [ami-45a14901](https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-45a14901) 
+us-west-2     |   [ami-6ba79a5b](https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-6ba79a5b)  |   [ami-65a79a55](https://console.aws.amazon.com/ec2/home?region=us-west-2#launchAmi=ami-65a79a55) 
+eu-west-1     |   [ami-b14f39c6](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-b14f39c6)  |   [ami-b54f39c2](https://console.aws.amazon.com/ec2/home?region=eu-west-1#launchAmi=ami-b54f39c2) 
+eu-central-1  |   [ami-8ac5fb97](https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-8ac5fb97)  |   [ami-88c5fb95](https://console.aws.amazon.com/ec2/home?region=eu-central-1#launchAmi=ami-88c5fb95) 
+
 ## Yardstick benchmark repositories
 ### Data grid
 1. **Apache Ignite.**
